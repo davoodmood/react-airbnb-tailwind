@@ -1,49 +1,7 @@
-import Head from 'next/head'
-import HeroSlide from '../components/HeroSlide'
-import Header from '../components/Header'
-import SmallCard from '../components/SmallCard'
-import exploreNearbyCall from './api/apiService'
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-export default function Home({exploreData}) {
-  return (
-    <div className="">
-      <Head>
-        <title>David's Airbnb Clone</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {/* Header Navigation*/}
-      <Header />
-      {/* Hero Slide */}
-      <HeroSlide />
-      {/* Body */}
-      <main className="max-w-7xl mx-auto px-8 sm:px-16">
-        <section className="pt-6">
-          <h2 className={`text-4xl font-semibold pb-5`}>Explore Nearby</h2>
-
-          {/* pull Data from the server. */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-col-4">
-            {exploreData?.map((item) => (
-              <SmallCard 
-                key={item.img} 
-                img={item.img} 
-                location={item.location} 
-                distance={item.distance} 
-              />
-            ))}
-          </div>
-        </section>
-      </main>
-    </div>
-  )
-}
-
-export async function getStaticProps() {
-  // Getting a static file
-  // const exploreData = await fetch(`url-to-server-api`)
-  // .then(
-  //   (res) => res.json()
-  // );
-  const exploreData = await [
+export default function exploreNearbyCall(req, res) {
+  res.status(200).json([
     {
       "img":"https://a0.muscache.com/im/pictures/18ab1ca2-a759-48de-a55b-1cb67c25c637.jpg?im_q=medq&im_w=240",
       "location":"London",
@@ -84,11 +42,5 @@ export async function getStaticProps() {
       "location":"Hove",
       "distance":"2-hour drive"
     }
-  ];
-
-  return {
-    props: {
-      exploreData
-    }
-  }
+  ])
 }
