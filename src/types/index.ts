@@ -3,3 +3,8 @@ export interface SmallCardProps {
     location: string;
     distance: string;
 }
+
+export interface MediumCardProps {
+    img: string;
+    title: string;
+}
