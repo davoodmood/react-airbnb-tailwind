@@ -5,6 +5,7 @@ import MediumCard from '../components/MediumCard'
 import SmallCard from '../components/SmallCard'
 import exploreNearbyCall from './api/apiService'
 import LargeCard from '../components/LargeCard'
+import Footer from '../components/Footer'
 
 export default function Home({cardsData, exploreData}) {
 
@@ -44,7 +45,6 @@ export default function Home({cardsData, exploreData}) {
             ))}
           </div>
         </section>
-        {/* <div className="bg-gray-600 h-15 my-20"> Hello</div> */}
         <LargeCard 
           img="https://a0.muscache.com/im/pictures/2595054e-d1d9-4fde-8046-58d51fcb3164.jpg?im_w=1440"
           title="Try hosting"
@@ -52,11 +52,15 @@ export default function Home({cardsData, exploreData}) {
           buttonTxt="Learn more"
         />
       </main>
+      <footer className="bg-gray-100">
+        <Footer />
+      </footer>
+      
     </div>
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps<GetStaticProps>() {
   // Getting a static file
   // const cardsData = await fetch(`url-to-server-api`)
   // .then(
@@ -124,12 +128,6 @@ export async function getStaticProps() {
     },
   );
 
-  // const cardsData = await new Array(
-  //   {"img":"https://a0.muscache.com/im/pictures/2f13349d-879d-43c6-83e3-8e5679291d53.jpg?im_w=1440","title":"Outdoor getaways"},
-  //   {"img":"https://a0.muscache.com/im/pictures/36f53e61-db8d-403c-9122-5b761c0e4264.jpg?im_w=1440","title":"Unique stays"},
-  //   {"img":"https://a0.muscache.com/im/pictures/7d82ca14-56e5-4465-8218-dcfa7d69b6ac.jpg?im_w=1440","title":"Unique stays"},
-  //   {"img":"https://a0.muscache.com/im/pictures/10a638e1-6aff-4313-8033-1275cec83987.jpg?im_w=1440","title":"Pet allowed"}
-  // );
   return {
     props: {
       cardsData,
