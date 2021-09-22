@@ -6,20 +6,40 @@ import SmallCard from '../components/SmallCard'
 import exploreNearbyCall from './api/apiService'
 import LargeCard from '../components/LargeCard'
 import Footer from '../components/Footer'
+import { useScrollData } from "scroll-data-hook";
 
 export default function Home({cardsData, exploreData}) {
 
+  const {
+    position
+  } = useScrollData({
+    onScrollStart: () => {
+      console.log('Started scrolling');
+    },
+    onScrollEnd: () => {
+      console.log('Finished scrolling');
+    }
+  });
+
   console.log("Cards Data: ", cardsData)
   return (
-    <div className="">
+    <div className="relative">
       <Head>
         <title>David's Airbnb Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Header Navigation*/}
-      <Header />
+      {/* {position.y > 300 && <Header />} */}
+      
       {/* Hero Slide */}
-      <HeroSlide />
+      
+      <div className={`${position.y === 0 && ``} sticky top-0 grid grid-col-1 z-50`}>
+          <Header position={position.y}/>
+      </div>
+      <div className={`relative -mt-20 -top-2 grid grid-col-1 z-40`}>
+          <HeroSlide/>
+      </div>
+      {/* <HeroSlide position={position.y}/> */}
       {/* Body */}
       <main className="max-w-7xl mx-auto px-8 sm:px-16">
         <section className="pt-6">
