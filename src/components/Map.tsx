@@ -50,7 +50,7 @@ function Map({searchResults}) {
                         latitude={result.lat}
                         longitude={result.long}
                        >
-                            <div className="relative h-32 w-48">
+                            <div className="relative h-32 w-48 z-50">
                                 <div className="top-0">
                                     <Image src={result.img} layout="fill" objectFit="cover"/>
                                 </div>
